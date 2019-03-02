@@ -4,7 +4,8 @@ from .models import Game
 
 
 def index(request):
-    return render(request, 'index.html', {})
+    all_games = Game.objects.all()
+    return render(request, 'index.html', { 'games': all_games })
 
 
 def detail(request, id):

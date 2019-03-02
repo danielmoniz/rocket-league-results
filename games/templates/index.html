@@ -1,2 +1,8 @@
 
 <h1>All Games</h1>
+
+{% for game in games %}
+  <p>
+    <a href="{{ game.id }}">{{ game.get_game_result }}</a>
+  </p>
+{% endfor %}
