@@ -11,3 +11,7 @@ def index(request):
 def detail(request, id):
     game = get_object_or_404(Game, pk=id)
     return render(request, 'detail.html', { 'game': game })
+
+
+def new(request):
+    return render(request, 'new.html')
