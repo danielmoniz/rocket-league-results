@@ -3,11 +3,19 @@
 
 <form class="" action="create" method="post">
   {% csrf_token %}
+  {{ form.as_p }}
   <p>
-    Blue score: <input type="text" name="blue_score" value="">
+    <input type="submit" name="" value="Record it">
+  </p>
+</form>
+
+<!-- <form class="" action="create" method="post">
+  {% csrf_token %}
+  <p>
+    Blue score: <input type="number" name="blue_score" value="">
   </p>
   <p>
-    Orange score: <input type="text" name="orange_score" value="">
+    Orange score: <input type="number" name="orange_score" value="">
   </p>
   <p>
     Overtime: No<input type="radio" name="overtime" value="false" checked> Yes<input type="radio" name="overtime" value="true">
@@ -19,4 +27,4 @@
   <p>
     <input type="submit" name="" value="Record it">
   </p>
-</form>
+</form> -->

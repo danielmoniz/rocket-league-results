@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 
 from .models import Game
+from .forms import GameForm
 
 
 def index(request):
@@ -16,16 +17,13 @@ def detail(request, id):
 
 
 def new(request):
-    return render(request, 'new.html')
+    return render(request, 'new.html', { 'form': GameForm() })
 
 
 def create(request):
-    overtime = request.POST['overtime'] == 'true'
-    new_game = Game(
-        blue_score=request.POST['blue_score'],
-        orange_score=request.POST['orange_score'],
-        overtime=overtime,
-        overtime_length=request.POST['overtime_length'],
-    )
-    new_game.save()
-    return HttpResponseRedirect(reverse('games:index'))
+    form = GameForm(request.POST)
+    if form.is_valid():
+        game = form.save()
+        return HttpResponseRedirect(reverse('games:index'))
+
+    return HttpResponseRedirect('/games')
